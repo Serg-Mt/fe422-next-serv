@@ -2,7 +2,7 @@
   "todo": [
     {
       "id": 1,
-      "checked": false,
+      "checked": true,
       "text": "Дело №1"
     },
     {
@@ -14,6 +14,26 @@
       "text": "55555",
       "checked": false,
       "id": 3
+    },
+    {
+      "text": "55555",
+      "checked": false,
+      "id": 4
+    },
+    {
+      "text": "77777",
+      "checked": true,
+      "id": 5
+    },
+    {
+      "text": "",
+      "checked": false,
+      "id": 6
+    },
+    {
+      "text": "55555",
+      "checked": false,
+      "id": 7
     }
   ]
 }

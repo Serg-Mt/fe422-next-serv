@@ -28,7 +28,7 @@ export function ToDo() {
       switch (action) {
         case DELETE_ACTION:
           await fetch(API_URL + '/' + id, { method: 'DELETE' });
-          await mutate();
+          mutate();
           return;
         case ADD_ACTION:
           await fetch(API_URL, {
