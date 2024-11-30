@@ -1,0 +1,19 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "checked": false,
+      "text": "Дело №1"
+    },
+    {
+      "text": "1111",
+      "id": 2,
+      "checked": false
+    },
+    {
+      "text": "55555",
+      "checked": false,
+      "id": 3
+    }
+  ]
+}
