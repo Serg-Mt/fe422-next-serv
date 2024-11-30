@@ -15,10 +15,10 @@ const
   getAllSt = () => database.prepare(`
       SELECT *
       FROM todo `),
-  // addSt = database.prepare(`
-  //     INSERT INTO todo (text) values(?) `),
-  // deleteSt = database.prepare(`
-  //     DELETE from todo where id = ? `),
+  addSt = database.prepare(`
+      INSERT INTO todo (text) values(?) `),
+  deleteSt = database.prepare(`
+      DELETE from todo where id = ? `),
   // update = database.prepare(`
   //     UPDATE todo set checked = ?`),
 
@@ -34,11 +34,18 @@ createServer(async (request, response) => {
     path = parsePath(urlObject.pathname),
     id = path.name;
   // console.log('parsing', { path, id })
-  response.setHeader('access-control-allow-credentials','true');
-  response.setHeader('access-control-allow-origin:','*');
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, PATCH, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+
+
   switch (true) {
     case '/todo' === path.dir || 'todo' === path.base:
       switch (request.method) {
+        case 'OPTIONS':
+          response.writeHead(204);
+          break;
         case 'GET':
           response.setHeader('content-type', 'application/json; charset=utf-8');
           response.write(JSON.stringify(getAllSt().all()));
@@ -47,11 +54,12 @@ createServer(async (request, response) => {
           break;
         case 'POST':
           const
-            { text } = await JSON.parse(postData(request));
+            { text } = JSON.parse(await postData(request));
           addSt.run(text);
           response.statusCode = 201;
           break;
         case 'DELETE':
+          deleteSt.run(id);
           response.statusCode = 200;
           break;
         case 'PATCH':
