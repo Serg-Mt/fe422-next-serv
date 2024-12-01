@@ -19,8 +19,8 @@ const
       INSERT INTO todo (text) values(?) `),
   deleteSt = database.prepare(`
       DELETE from todo where id = ? `),
-  // update = database.prepare(`
-  //     UPDATE todo set checked = ?`),
+  update = database.prepare(`
+      UPDATE todo set checked = ?  where id=?`),
 
 
   port = 3333;
@@ -43,9 +43,9 @@ createServer(async (request, response) => {
   switch (true) {
     case '/todo' === path.dir || 'todo' === path.base:
       switch (request.method) {
-        case 'OPTIONS':
-          response.writeHead(204);
-          break;
+        // case 'OPTIONS':
+        //   response.writeHead(204);
+        //   break;
         case 'GET':
           response.setHeader('content-type', 'application/json; charset=utf-8');
           response.write(JSON.stringify(getAllSt().all()));
@@ -55,6 +55,7 @@ createServer(async (request, response) => {
         case 'POST':
           const
             { text } = JSON.parse(await postData(request));
+          console.log('POST', { text });
           addSt.run(text);
           response.statusCode = 201;
           break;
@@ -63,6 +64,10 @@ createServer(async (request, response) => {
           response.statusCode = 200;
           break;
         case 'PATCH':
+          const
+            { checked } = JSON.parse(await postData(request));
+          console.log('PATCH', { checked });
+          update.run(+checked, id);
           response.statusCode = 200;
           break;
       }

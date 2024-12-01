@@ -12,7 +12,9 @@ const
   fetcher = async (url) => {
     const response = await fetch(url);
     if (!response.ok) throw new Error('fetch ' + response.status);
-    return await response.json();
+    const data = await response.json();
+    // data.forEach(obj => obj.checked = !!obj.checked);
+    return data;
   };
 
 
@@ -59,7 +61,7 @@ export function ToDo() {
     <input value={text} onInput={event => setText(event.target.value)} />
     <button data-action={ADD_ACTION}>add</button>
     <ol>
-      {data?.map(item => <Item key={item.key} item={item} />)}
+      {data?.map(item => <Item key={item.id} item={item} />)}
     </ol>
   </fieldset>;
 }
@@ -71,6 +73,7 @@ function Item({ item }) {
     <input type="checkbox" checked={checked} data-action={TOGGLE_CHECKBOX_ACTION} />
     <span>{text}</span>
     <button data-action={DELETE_ACTION}>❌</button>
-    {checked && '💹'}
+    {!!checked && '💹'}
+    {/* {typeof checked} */}
   </li>
 }
