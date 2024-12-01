@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "@vercel/postgres": "^0.10.0",
     "json-server": "0.17.4",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",

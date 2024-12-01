@@ -7,7 +7,7 @@ const
   DELETE_ACTION = 'del',
   ADD_ACTION = 'add',
   DEL_COMPLETED_ACTION = 'del-completed',
-  API_URL = 'http://localhost:3333/todo',
+  API_URL = '/api/todo',
 
   fetcher = async (url) => {
     const response = await fetch(url);
