@@ -7,7 +7,7 @@ const
   DELETE_ACTION = 'del',
   ADD_ACTION = 'add',
   DEL_COMPLETED_ACTION = 'del-completed',
-  API_URL = '/api/todo',
+  API_URL = '/api/todo2',
 
   fetcher = async (url) => {
     const response = await fetch(url);
