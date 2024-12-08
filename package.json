@@ -6,7 +6,7 @@
     "jss": "json-server -p 3333 -d 1000 db.json",
     "serv": "node --experimental-sqlite --watch serv.mjs",
     "dev": "next dev --turbopack",
-    "build": "prisma generate && next dev",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
   },
