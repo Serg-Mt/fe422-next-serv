@@ -13,7 +13,7 @@ export default async function todo(request: NextApiRequest, response: NextApiRes
   switch (method) {
     case 'GET':
       const
-        rows = await prisma.toDo.findMany();
+        rows = await prisma.toDo.findMany({ orderBy: [{ created: 'asc' }] });
       response.status(200).json(rows);
       return;
     case 'DELETE':

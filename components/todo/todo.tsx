@@ -50,9 +50,9 @@ export function ToDoList() {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ checked })
-          }
-          );
+          });
           mutate();
+          return;
       };
     };
   console.log('swr=', { data, error });
