@@ -6,6 +6,7 @@ const
   TOGGLE_CHECKBOX_ACTION = 'toggle-checkbox',
   DELETE_ACTION = 'del',
   ADD_ACTION = 'add',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   DEL_COMPLETED_ACTION = 'del-completed',
   API_URL = '/api/todo2',
 

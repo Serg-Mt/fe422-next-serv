@@ -1,6 +1,7 @@
 import { MouseEventHandler, useState } from 'react';
 import useSWR from 'swr';
 import { ToDo } from '@prisma/client';
+import classes from './todo.module.css';
 
 
 const
@@ -8,13 +9,14 @@ const
   DELETE_ACTION = 'del',
   ADD_ACTION = 'add',
   // DEL_COMPLETED_ACTION = 'del-completed',
-  API_URL = '/api/todo2',
+  API_URL = '/api/todo',
 
   fetcher = async (url: string | URL): Promise<ToDo[]> => { //   fetcher(['api','posts','5']) /api/poasts/5
     const response = await fetch(url);
     if (!response.ok) throw new Error('fetch ' + response.status);
     const data = await response.json();
     // data.forEach(obj => obj.checked = !!obj.checked);
+    console.log('data=', data);
     return data;
   };
 
@@ -56,8 +58,8 @@ export function ToDoList() {
       };
     };
   console.log('swr=', { data, error });
-  return <fieldset onClick={onClick}>
-    <div style={{ position: 'absolute', fontSize: 'xxx-large' }}>
+  return <fieldset onClick={onClick} className={classes.todoApp}>
+    <div className={classes.example}>
       {isLoading && '⌛'}
       {isValidating && '👁'}
       {error && `💀 ${error.toString()}`}

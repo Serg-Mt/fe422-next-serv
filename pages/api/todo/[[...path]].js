@@ -7,9 +7,10 @@
 
 import { neon } from '@neondatabase/serverless';
 const
-  sql = neon(process.env.POSTGRES_URL);
+  CONNECTSTRING = process.env.POSTGRES_URL,
+  sql = neon(CONNECTSTRING);
 // deleteFn = id => sql`DELETE from todo WHERE id=${id}`
-console.log('==================================');
+console.log('==================================', CONNECTSTRING.slice(0, 18));
 
 export default async function todo(request, response) {
   const
@@ -25,7 +26,7 @@ export default async function todo(request, response) {
       return;
     case 'DELETE':
       const result = await sql`DELETE from todo WHERE id=${id}`;
-      console.log('result=', result);
+      // console.log('result=', result);
       response.status(200).send();
       return;
     case 'POST':
