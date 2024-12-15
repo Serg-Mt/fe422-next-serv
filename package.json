@@ -2,7 +2,6 @@
   "name": "fe422-next-serv",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "jss": "json-server -p 3333 -d 1000 db.json",
     "serv": "node --experimental-sqlite --watch serv.mjs",
