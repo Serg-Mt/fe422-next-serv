@@ -21,16 +21,16 @@ export default async function todo(request, response) {
   console.log('<<', method, { id }, request.body);
   switch (method) {
     case 'GET':
-      const rows = await sql`SELECT * FROM todo`;
+      const rows = await sql`SELECT * FROM "ToDo"`;
       response.status(200).json(rows);
       return;
     case 'DELETE':
-      const result = await sql`DELETE from todo WHERE id=${id}`;
+      const result = await sql`DELETE from "ToDo" WHERE id=${id}`;
       // console.log('result=', result);
       response.status(200).send();
       return;
     case 'POST':
-      const result2 = await sql`INSERT INTO todo (text) values(${request.body.text})`;
+      const result2 = await sql`INSERT INTO "ToDo" (text) values(${request.body.text})`;
       console.log('result2=', result2);
       response.status(201).send();
       return;

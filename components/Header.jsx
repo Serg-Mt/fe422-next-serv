@@ -4,7 +4,7 @@ import Link from 'next/link';
 const
   pages = [
     { href: '/', title: 'Home' },
-    { href: '/new', title: 'New' }
+    { href: '/auth-test', title: 'auth test' }
   ];
 
 
